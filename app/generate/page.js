@@ -1,14 +1,18 @@
 "use client"
+import { useSearchParams } from 'next/navigation';
 import React, { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
 const Generate = () => {
-    // const [link, setLink] = useState("");
+
+    const searchParams = useSearchParams();
+
+    // const [link, setLink] = useState("");    
     // const [linktext, setLinktext] = useState("");
     const [links, setLinks] = useState([{ link: "", linktext: "" }])
-    const [handle, setHandle] = useState("");
+    const [handle, setHandle] = useState(searchParams.get("handle"));
     const [pic, setPic] = useState("");
 
     const handleChange = (index, link, linktext) => {
@@ -78,8 +82,8 @@ const Generate = () => {
                         <h2 className='font-semibold text-2xl'>Step 2 : Add links</h2>
                         {links && links.map((item, index) => {
                             return <div key={index} className="mx-4">
-                                <input value={item.link || ""} onChange={e => { handleChange(index, e.target.value, item.linktext) }} className="px-4 py-2 mx-2 my-2 focus:outline-pink-500 rounded-3xl " type="text" placeholder='Enter link' />
                                 <input value={item.linktext || ""} onChange={e => { handleChange(index, item.link, e.target.value) }} className="px-4 py-2 mx-2 my-2 focus:outline-pink-500 rounded-3xl " type="text" placeholder='Enter link text' />
+                                <input value={item.link || ""} onChange={e => { handleChange(index, e.target.value, item.linktext) }} className="px-4 py-2 mx-2 my-2 focus:outline-pink-500 rounded-3xl " type="text" placeholder='Enter link' />
                             </div>
                         })}
                         <button onClick={() => addLink()} className='py-2 mx-2 bg-slate-700 text-white rounded-3xl p-5'>+ Add Link</button>
@@ -89,7 +93,7 @@ const Generate = () => {
                         <h2 className='font-semibold text-2xl'>Step 3 : Add Picture and finalize</h2>
                         <div className="mx-4 flex flex-col">
                             <input value={pic || ""} onChange={e => { setPic(e.target.value) }} className="px-4 py-2 mx-2 my-2 focus:outline-pink-500 rounded-3xl " type="text" placeholder='Enter link to your picture' />
-                            <button disabled={pic == "" || handle == "" || links[0].linktext == ""} onClick={() => { sumbitLinks() }} className='disabled:bg-slate-500 p-5 py-2 w-fit my-5 bg-slate-900 text-white font-bold rounded-3xl'>Create your linktree</button>
+                            <button disabled={pic == "" || handle == "" || links[0].linktext == ""} onClick={() => { sumbitLinks() }} className='disabled:bg-slate-5    00 p-5 py-2 w-fit my-5 bg-slate-900 text-white font-bold rounded-3xl'>Create your linktree</button>
                         </div>
                     </div>
                 </div>
