@@ -32,7 +32,7 @@ const Generate = () => {
         setLinks(links.concat([{ link: "", linktext: "" }]))
     }
 
-    const sumbitLinks = async (text, link, handle) => {
+    const sumbitLinks = async () => {
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
@@ -74,7 +74,7 @@ const Generate = () => {
                     <div className="item">
                         <h2 className='font-semibold text-2xl'>Step 1 : Claim your handle</h2>
                         <div className="mx-4">
-                            <input value={handle || ""} onChange={e => { setHandle(e.target.value) }} className="px-4 py-2 my-2 focus:outline-pink-500 rounded-3xl" type="text" placeholder='Choose a handle' name="" id="" />
+                            <input value={handle || ""} onChange={e => { setHandle(e.target.value) }} className="px-4 py-2 my-2 focus:outline-pink-500 rounded-3xl" type="text" placeholder='Choose a handle' />
                         </div>
                     </div>
 

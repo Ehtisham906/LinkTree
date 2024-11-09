@@ -16,5 +16,6 @@ export async function POST(request) {
         return Response.json({ success: false, error: true, message: 'This linktree already exists', result: null });
     }
     const result = await collection.insertOne(body);
-    return Response.json({ success: true, error: flase, message: 'Your linktree is generated.', result: result });
+
+    return Response.json({ success: true, error: false, message: 'Your linktree is generated.', result: result });
 }
