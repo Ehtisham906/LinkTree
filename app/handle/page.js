@@ -1,4 +1,4 @@
 export default async function page({ params }) {
-    const slug = (await params).slug
-    return <div>My Post: {slug}</div>
+    const handle = (await params).handle
+    return <div>My Post: {handle}</div>
 }
